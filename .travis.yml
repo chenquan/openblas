@@ -1,0 +1,29 @@
+sudo: false
+language: go
+os:
+  - windows
+go:
+  - 1.10.x
+  - 1.11.x
+  - 1.12.x
+  - tip
+env:
+  - GO111MODULE=on
+global:
+  - GOARCH=amd64
+  - TRAVISTEST=true
+
+
+branches:
+  only:
+    - master
+    - dev
+
+before_install:
+  - go get github.com/chenquan/goveralls
+
+go_import_path: github.com/yunqi/openblas
+
+script:
+  - $GOPATH/bin/goveralls -service=travis-ci
+
