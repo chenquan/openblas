@@ -70,3 +70,33 @@ func Test_cblas_sdsdot(t *testing.T) {
 	result := cblas_sdsdot(2, 3, []float32{1, 2}, 1, []float32{1, 2}, 1)
 	fmt.Println(result)
 }
+
+func Test_cblas_ssum(t *testing.T) {
+	type args struct {
+		N    int
+		X    []float32
+		incX int
+	}
+	tests := []struct {
+		name string
+		args args
+		want float32
+	}{
+		{
+			name: "1",
+			args: args{
+				N:    2,
+				X:    []float32{1, 2},
+				incX: 1,
+			},
+			want: 3,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			//if got := cblas_ssum(tt.args.N, tt.args.X, tt.args.incX); got != tt.want {
+			//	t.Errorf("cblas_ssum() = %v, want %v", got, tt.want)
+			//}
+		})
+	}
+}
