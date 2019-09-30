@@ -20,7 +20,6 @@ package openblas
 */
 import "C"
 import (
-	"fmt"
 	"unsafe"
 )
 
@@ -39,7 +38,6 @@ func cblas_sdot(N int, X []float32, incX int, Y []float32, incY int) float32 {
 }
 func cblas_ddot(N int, X []float64, incX int, Y []float64, incY int) float64 {
 	var result C.double = C.cblas_ddot(C.int(N), (*C.double)(&X[0]), C.int(incX), (*C.double)(&Y[0]), C.int(incY))
-	fmt.Println(result)
 	return float64(result)
 }
 
