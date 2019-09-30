@@ -530,3 +530,34 @@ func Test_cblas_zdotu_sub(t *testing.T) {
 		})
 	}
 }
+
+func Test_cblas_caxpy(t *testing.T) {
+	type args struct {
+		N     int
+		alpha complex64
+		X     []complex64
+		incX  int
+		Y     []complex64
+		incY  int
+	}
+	tests := []struct {
+		name string
+		args args
+	}{
+		{
+			name: "1",
+			args: args{
+				N:     2,
+				alpha: 1,
+				X:     []complex64{1, 2},
+				incX:  1,
+				Y:     []complex64{2, 3},
+				incY:  1,
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+		})
+	}
+}

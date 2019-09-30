@@ -123,3 +123,35 @@ func cblas_dznrm2(N int, X []complex128, incX int) float64 {
 //CBLAS_INDEX cblas_idmin(OPENBLAS_CONST blasint n, OPENBLAS_CONST double *x, OPENBLAS_CONST blasint incx);
 //CBLAS_INDEX cblas_icmin(OPENBLAS_CONST blasint n, OPENBLAS_CONST void  *x, OPENBLAS_CONST blasint incx);
 //CBLAS_INDEX cblas_izmin(OPENBLAS_CONST blasint n, OPENBLAS_CONST void *x, OPENBLAS_CONST blasint incx);
+
+func cblas_saxpy(N int, alpha float32, X []float32, incX int, Y []float32, incY int) {
+
+	C.cblas_saxpy(C.int(N), C.float(alpha), (*C.float)(&X[0]), C.int(incX), (*C.float)(&Y[0]), C.int(incY))
+}
+func cblas_daxpy(N int, alpha float64, X []float64, incX int, Y []float64, incY int) {
+	C.cblas_daxpy(C.int(N), C.double(alpha), (*C.double)(&X[0]), C.int(incX), (*C.double)(&Y[0]), C.int(incY))
+}
+
+//void cblas_caxpy(OPENBLAS_CONST blasint n, OPENBLAS_CONST void *alpha, OPENBLAS_CONST void *x, OPENBLAS_CONST blasint incx, void *y, OPENBLAS_CONST blasint incy);
+func cblas_caxpy(N int, alpha complex64, X []complex64, incX int, Y []complex64, incY int) {
+	C.cblas_caxpy(C.int(N), unsafe.Pointer(&alpha), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY))
+}
+
+//void cblas_zaxpy(OPENBLAS_CONST blasint n, OPENBLAS_CONST void *alpha, OPENBLAS_CONST void *x, OPENBLAS_CONST blasint incx, void *y, OPENBLAS_CONST blasint incy);
+func cblas_zaxpy(N int, alpha complex128, X []complex128, incX int, Y []complex128, incY int) {
+	C.cblas_zaxpy(C.int(N), unsafe.Pointer(&alpha), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY))
+
+}
+
+func cblas_scopy(N int, X []float32, incX int, Y []float32, incY int) {
+	C.cblas_scopy(C.int(N), (*C.float)(&X[0]), C.int(incX), (*C.float)(&Y[0]), C.int(incY))
+}
+func cblas_dcopy(N int, X []float64, incX int, Y []float64, incY int) {
+	C.cblas_dcopy(C.int(N), (*C.double)(&X[0]), C.int(incX), (*C.double)(&Y[0]), C.int(incY))
+}
+func cblas_ccopy(N int, X []complex64, incX int, Y []complex64, incY int) {
+	C.cblas_ccopy(C.int(N), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY))
+}
+func cblas_zcopy(N int, X []complex128, incX int, Y []complex128, incY int) {
+	C.cblas_zcopy(C.int(N), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY))
+}
