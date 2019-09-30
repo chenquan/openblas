@@ -20,7 +20,6 @@ package openblas
 */
 import "C"
 import (
-	"fmt"
 	"unsafe"
 )
 
@@ -39,7 +38,6 @@ func cblas_sdot(N int, X []float32, incX int, Y []float32, incY int) float32 {
 }
 func cblas_ddot(N int, X []float64, incX int, Y []float64, incY int) float64 {
 	var result C.double = C.cblas_ddot(C.int(N), (*C.double)(&X[0]), C.int(incX), (*C.double)(&Y[0]), C.int(incY))
-	fmt.Println(result)
 	return float64(result)
 }
 
@@ -79,24 +77,24 @@ func cblas_dzasum(N int, X []complex128, incX int) float64 {
 	return float64(C.cblas_dzasum(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
 }
 
-func cblas_ssum(N int, X []float32, incX int) float32 {
-	return float32(C.cblas_ssum(C.int(N), (*C.float)(&X[0]), C.int(incX)))
-}
-func cblas_dsum(N int, X []float64, incX int) float64 {
-	return float64(C.cblas_dsum(C.int(N), (*C.double)(&X[0]), C.int(incX)))
-}
-func cblas_scsum(N int, X []complex64, incX int) float32 {
-	return float32(C.cblas_scsum(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
-}
-func cblas_dzsum(N int, X []complex128, incX int) float64 {
-	return float64(C.cblas_dzsum(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
-}
+//func cblas_ssum(N int, X []float32, incX int) float32 {
+//	return float32(C.cblas_ssum(C.int(N), (*C.float)(&X[0]), C.int(incX)))
+//}
+//func cblas_dsum(N int, X []float64, incX int) float64 {
+//	return float64(C.cblas_dsum(C.int(N), (*C.double)(&X[0]), C.int(incX)))
+//}
+//func cblas_scsum(N int, X []complex64, incX int) float32 {
+//	return float32(C.cblas_scsum(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
+//}
+//func cblas_dzsum(N int, X []complex128, incX int) float64 {
+//	return float64(C.cblas_dzsum(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
+//}
 
 func cblas_snrm2(N int, X []float32, incX int) float32 {
 	return float32(C.cblas_snrm2(C.int(N), (*C.float)(&X[0]), C.int(incX)))
 }
 func cblas_dnrm2(N int, X []float64, incX int) float64 {
-	return float64(C.cblas_snrm2(C.int(N), (*C.double)(&X[0]), C.int(incX)))
+	return float64(C.cblas_dnrm2(C.int(N), (*C.double)(&X[0]), C.int(incX)))
 }
 func cblas_scnrm2(N int, X []complex64, incX int) float32 {
 	return float32(C.cblas_scnrm2(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
